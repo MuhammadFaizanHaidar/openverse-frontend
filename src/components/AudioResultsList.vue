@@ -10,7 +10,8 @@
         v-for="audio in audios"
         :key="audio.id"
         :audio="audio"
-        :is-compact="true"
+        layout="row"
+        :size="audioTrackSize"
       />
     </div>
     <div v-if="!isFetchingAudiosError" class="load-more">
@@ -94,6 +95,9 @@ export default {
     },
     errorMessage() {
       return this.$store.state.errorMessage
+    },
+    audioTrackSize() {
+      return this.$store.state.isFilterVisible ? 'm' : 's'
     },
   },
   methods: {
